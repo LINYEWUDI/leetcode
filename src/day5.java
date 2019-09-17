@@ -7,7 +7,7 @@ public class day5 {
     public static void main(String[] args) {
         String str = "ababa";
         String str1 = "cbbd";
-        String max = max(str1);
+        String max = max(str);
 
         System.out.println(max);
 
