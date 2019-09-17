@@ -20,6 +20,10 @@ import java.util.List;
 
 public class day2 {
 
+    /**
+     *  自己解法(未通过原因未知)
+     *  思想：拿到两个链表后,分别计算出链表所代表的值,然后相加,再重新生成链表
+     */
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         //初始化计数器
         Integer count1 = 1;
@@ -57,7 +61,7 @@ public class day2 {
             if (l2 == null) break;
         }
 
-        int sum = sum1 + sum2;
+        long sum = sum1 + sum2;
 
         int count0 = 0;
 
@@ -100,14 +104,70 @@ public class day2 {
         return listNode;
     }
 
+    /**
+     * 进位解法
+     * 思想：同时遍历两个链表,然后相加,每次保存进位的值,带入下一次的相加当中.
+     * 最后从头结点返回的即为正确答案(同样也是逆向的)
+     */
+    public static ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
+        //创建头结点
+        ListNode pre = new ListNode(0);
+        //创建移动指针指向头结点
+        ListNode t = pre;
+        //初始化进位值
+        int carry = 0;
+
+        //节点不为空时
+        while (l1 != null || l2 != null){
+          int x = l1.val == null? 0:l1.val;
+          int y = l2.val == null? 0:l2.val;
+
+          //初始化总和
+          int sum = x+y+carry;
+
+        /**
+         *  sum = 7+8 = 15
+         *  carry = 1
+         *  sum = 5
+         *  carry为进位值,需要进行储存,带到下一次计算当中
+         */
+
+          //进位值
+          carry = sum/10;
+          //非进位值
+          sum = sum%10;
+
+          //初始化下一个节点为 和的个位数
+          t.next = new ListNode(sum);
+          //移动指针
+          t = t.next;
+
+          //如果两个链表都下一个都不为空时,移动指针
+          if (l1 != null){
+              l1 = l1.next;
+          }
+          if (l2 != null){
+              l2 = l2.next;
+          }
+        }
+
+        //当最后一位有进位时,创建最后一个节点进行
+        if (carry == 1){
+            t.next = new ListNode(carry);
+        }
+        return pre;
+    }
+
     public static void main(String[] args) {
+        /*  [9,9,9,9,9,9,9,9,9,9]
+            [9,9,9,9,9,9,9,9,9,9]
+         */
         ListNode listNodeX1 = new ListNode(9);
         ListNode listNodeX2 = new ListNode(9);
         ListNode listNodeX3 = new ListNode(9);
 
         listNodeX3.next = listNodeX2;
         listNodeX2.next = listNodeX1;
-
 
 
         ListNode listNodeY1 = new ListNode(9);
@@ -122,11 +182,16 @@ public class day2 {
 
 
 
-        ListNode listNode = addTwoNumbers(listNodeX3, listNodeY3);
+        ListNode listNode = addTwoNumbers1(listNodeX3, listNodeY3);
 
 
-//        System.out.prIntegerln(listNode.next);
-//        System.out.prIntegerln(listNode.val);
-
+        while (listNode.next!=null || listNode.val!=null){
+            System.out.println(listNode.val);
+            if (listNode.next!=null) listNode = listNode.next;
+            else break;
+        }
     }
+
+
+
 }
