@@ -1,46 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class day15 {
 
   public static void main(String[] args) {
     int [] arr = {-1, 0, 1, 2, -1, -4};
     List<List<Integer>> lists = threeSum(arr);
-    for (List<Integer> list : lists){
-      list.stream().forEach(System.out::println);
-    }
+    lists.stream().forEach(System.out::println);
   }
-
   public static List<List<Integer>> threeSum(int[] nums) {
-    ArrayList<Integer> list= new ArrayList<>();
-    ArrayList<List<Integer>> arrayList = new ArrayList<>();
-    for (int i = 0; i < nums.length; i++) {
-      for (int j = i+1; j < nums.length-2; j++) {
-        for (int k = j; k < 2; k++) {
-          boolean aTrue = isTrue(i, j, k);
-          if (aTrue){
-            arrayList = new ArrayList<>();
-            list.add(i);
-            list.add(j);
-            list.add(k);
+    HashSet<List<Integer>> set = new HashSet<>();
+    for (int i = 0; i < nums.length - 2; i++) {
+      for (int j = i + 1; j < nums.length - 1; j++) {
+        for (int k = j + 1; k < nums.length; k++) {
+          LinkedList<Integer> integers = new LinkedList<>();
+          if ((nums[i] + nums[j] + nums[k]) == 0) {
+            integers.add(nums[i]);
+            integers.add(nums[j]);
+            integers.add(nums[k]);
+            Collections.sort(integers, new Comparator<Integer>() {
+              @Override
+              public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+              }
+            });
+            set.add(integers);
           }
         }
       }
-      arrayList.add(list);
+
     }
-
-    return arrayList;
+    ArrayList<List<Integer>> list = new ArrayList<>();
+    list.addAll(set);
+    return list;
   }
-
-
-
-  public static boolean isTrue(int i,int j, int k) {
-    if ((i + j + k) == 0){
-      return true;
-    }else {
-      return false;
-    }
-  }
-
-
 }
