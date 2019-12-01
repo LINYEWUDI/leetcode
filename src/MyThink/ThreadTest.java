@@ -10,6 +10,9 @@ public class ThreadTest {
          * 如果打上标记时的线程正在sleep，则会抛出异常，并且清除标记，也意味着会继续执行下去。
          * 下面代码会出现两种不同的情况：综合上面进行解释：
          * 如果打上标记时正在sleep，则会抛出异常，并且清除标记，if中的判断是否有中断标记也无效。如果不在sleep，则会进入if的判断中，break出去，线程一也就不再执行打印
+         *
+         * 如果是先用interrupted进行判断，则会清除标记，再用isinterrupted是无法获取到的
+         * 如果是先用isinterrupted进行判断，则不会清除标记，再用interrupted也是可以获取到的
          */
         show();
     }
@@ -17,9 +20,15 @@ public class ThreadTest {
     public static void show(){
         Thread t1 = new Thread(() -> {
             for (int i = 0; i < 10; i++) {
+
                 if (Thread.interrupted()){
-                    break;
+                System.out.println("interrupted拿到的，再用isInterrupted拿不到了");
+                break;
                 }
+                if (Thread.currentThread().isInterrupted()){
+                    System.out.println("isInterrupted拿到的，再用interrupted拿得到哦");
+                }
+
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
