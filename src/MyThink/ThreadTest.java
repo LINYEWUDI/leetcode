@@ -1,3 +1,5 @@
+package MyThink;
+
 public class ThreadTest {
 
 

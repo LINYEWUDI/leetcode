@@ -1,3 +1,5 @@
+package MyThink;
+
 import java.util.ArrayList;
 
 /**
@@ -6,7 +8,7 @@ import java.util.ArrayList;
  *
  *      ? super T 可以往里add，因为此时的？一定是T或者T的父类，那么往里存的对象必须是T的子类，因为如果不是T的子类，那么就不知道存进去的对象用什么类去接受，
  *  不能具体到某一个类去接收，所以只能用T去接收，比如万一add进去的是T的父类，但是集合的泛型是T，那么就会报错，也就限制了add的元素必须是T或者T的子类。
- *  此时可能会产生疑惑，那么为什么取出来的时候只能是Object呢，因为除了add之外，赋值引用也是一个问题，例如 List<? super Person> list = new ArrayList<Object>();
+ *  此时可能会产生疑惑，那么为什么取出来的时候只能是Object呢，因为除了add之外，赋值引用也是一个问题，例如 List<? super MyThink.Person> list = new ArrayList<Object>();
  *  这里因为? super Person代表着父类，所以可以直接将集合直接赋值。此时可能会产生另外一个疑惑，那为什么不能add T的父类但是可以直接赋值T父类引用的集合呢，因为直接赋值引用的集合是已经确定的类，
  *  但是add的类可能是T的各种父类，这是不符合java规则。
  *

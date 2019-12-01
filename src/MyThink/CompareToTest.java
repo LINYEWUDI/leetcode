@@ -1,3 +1,5 @@
+package MyThink;
+
 import java.util.HashMap;
 
 public class CompareToTest {
