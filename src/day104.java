@@ -4,7 +4,8 @@ public class day104 {
      */
 
     public static void main(String[] args) {
-        System.out.println(findDeep(new TreeNode(10)));
+        TreeNode treeNode = TreeUtils.createTreeNode();
+        System.out.println(findDeep(treeNode));
 
     }
 
