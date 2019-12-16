@@ -1,24 +1,24 @@
+/**
+ * 查询树的最大深度
+ */
 public class day104 {
-    /**
-     * 查询树的深度
-     */
-
-    public static void main(String[] args) {
+  /**
+   * 这题有些特殊，查询二叉树的最大深度，不是很适用于套路。
+   * 目的是查询最大深度，无非就是看根节点的左右子树哪个更大一点，取大的那个再加一就是的，如果是为null则返回0即可
+   */
+  public static void main(String[] args) {
         TreeNode treeNode = TreeUtils.createTreeNode();
         System.out.println(findDeep(treeNode));
 
     }
 
     public static Integer findDeep(TreeNode treeNode) {
-        //出口
-        if (treeNode == null){
-            return 0;
-        }
+      if (treeNode == null){
+          return 0;
+      }
+      Integer leftDeep = findDeep(treeNode.left);
+      Integer rightDeep = findDeep(treeNode.right);
 
-        Integer deepLeft = findDeep(treeNode.left);
-        Integer deepRight = findDeep(treeNode.right);
-
-       return Math.max(deepLeft, deepRight)+1;
-
+      return Math.max(leftDeep,rightDeep)+1;
     }
 }
