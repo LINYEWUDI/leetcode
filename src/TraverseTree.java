@@ -14,9 +14,9 @@ public class TraverseTree {
       return;
     }
 
+    System.out.println(root.val);
     isSymmetric(root.left);
     isSymmetric(root.right);
-    System.out.println(root.val);
 
 
   }

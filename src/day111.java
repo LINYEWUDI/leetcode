@@ -15,26 +15,25 @@
 public class day111 {
 
     public static void main(String[] args) {
-      TreeNode treeNode = null;
+      TreeNode treeNode = TreeUtils.createTreeNode();
       System.out.println(minDepth(treeNode));
     }
 
 
     public static int minDepth(TreeNode root) {
       if (root == null) return 0;
-      if (root != null){
-        //定出口
-        if (root.left == null && root.right == null){
-          return 1;
-        }
-      }else {
-        return 0;
+      //定出口
+      if (root.left == null && root.right == null){
+        return 1;
       }
 
-        int leftDepth = minDepth(root.left);
-        int rightDepth = minDepth(root.right);
+      int leftDepth = minDepth(root.left);
+      int rightDepth = minDepth(root.right);
 
-        return Math.min(leftDepth,rightDepth)+1;
+      if (root.left == null || root.right == null){
+        return leftDepth+rightDepth+1;
+      }
+      return Math.min(leftDepth,rightDepth)+1;
     }
 
 
