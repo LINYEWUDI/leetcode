@@ -14,6 +14,19 @@
  */
 public class day111 {
 
+  /**
+   * 思考：看做一个非递归的题目(非无限)完成，求最少深度，那么当自身为null时，已经是叶子节点之下了，高度为0
+   * 若左右子树都是null，则为叶子节点，高度为1
+   * 左右子树有一个为空的情况为，则直接用左右子树深度和再加一，因为此时为有一个为null，则必有一个为0,例如： 3
+                                                                                         \
+                                                                                         20
+                                                                                          \
+                                                                                          7
+   这种情况下，一层一层的看，递归最深处此时root为7，左右子树都是null，return 1，然后root为20，左子树为null，右子树有值，则此时为0+1+1=2
+   此时到了3，依旧是左边为null，右边为2，0+2+1=3，也就是树的深度为3
+   *
+   */
+
     public static void main(String[] args) {
       TreeNode treeNode = TreeUtils.createTreeNode();
       System.out.println(minDepth(treeNode));

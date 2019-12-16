@@ -13,10 +13,10 @@ public class TreeUtils {
     treeNode1.left=treeNode2;
     treeNode1.right=treeNode3;
 
-    treeNode2.left=treeNode4;
-    treeNode2.right=treeNode5;
+//    treeNode2.left=treeNode4;
+//    treeNode2.right=treeNode5;
 
-    treeNode3.left=treeNode6;
+    treeNode7.left=treeNode6;
     treeNode3.right=treeNode7;
 
     return treeNode1;
