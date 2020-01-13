@@ -9,20 +9,26 @@
  */
 public class day322 {
 
-    public int coinChange(int[] coins, int amount) {
+    public static void main(String[] args) {
+        int[] coins = new int[]{1,2,5};
+        int amout = 11;
+        System.out.println(coinChange(coins,amout));
+    }
+
+    public static int coinChange(int[] coins, int amount) {
         //初始化状态  f(x) = 拼成总金额的硬币数
-        int [] arr = new int[amount];
+        int [] arr = new int[amount+1];
 
         arr[0] = 0;
 
 
 
         //状态转移方程  f(x) = min{f(x-1),f(x-2),f(x-5)} + 1
-        for (int i = 0; i < amount; i++) {
+        for (int i = 1; i <= amount; i++) {
             arr[i] = Integer.MAX_VALUE;
             for (int j = 0; j < coins.length; j++) {
                 //拼凑的钱 > 币值
-                if (i > coins[j] && arr[i-coins[j]] != Integer.MAX_VALUE){
+                if (i >= coins[j] && arr[i-coins[j]] != Integer.MAX_VALUE){
                     arr[i] = Math.min(arr[i],arr[i-coins[j]]+1);
                 }
             }
