@@ -1,4 +1,4 @@
-public class ListUtils {
+public class ListNodeUtils {
 
   public static ListNode createLian(){
     final ListNode listNode = new ListNode(0);
@@ -12,4 +12,12 @@ public class ListUtils {
 
     return listNode;
   }
+
+  public static void printLian(ListNode listNode){
+    while (listNode != null){
+      System.out.println(listNode.val);
+      listNode = listNode.next;
+    }
+  }
+
 }

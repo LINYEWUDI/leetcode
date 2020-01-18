@@ -12,13 +12,79 @@ public class day104 {
 
     }
 
-    public static Integer findDeep(TreeNode treeNode) {
-      if (treeNode == null){
-          return 0;
-      }
-      Integer leftDeep = findDeep(treeNode.left);
-      Integer rightDeep = findDeep(treeNode.right);
 
-      return Math.max(leftDeep,rightDeep)+1;
+
+
+
+    public static int maxDepth(TreeNode root) {
+      if (root == null) {
+        return 0;
+      }
+
+      int left = maxDepth(root.left);
+      int right = maxDepth(root.right);
+
+
+      return (left > right ? left : right) + 1;
+
+
     }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      public static Integer findDeep(TreeNode treeNode) {
+        if (treeNode == null){
+          return 0;
+        }
+        Integer leftDeep = findDeep(treeNode.left);
+        Integer rightDeep = findDeep(treeNode.right);
+
+        return Math.max(leftDeep,rightDeep)+1;
+      }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

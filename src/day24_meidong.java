@@ -6,7 +6,7 @@
 public class day24_meidong {
 
     public static void main(String[] args) {
-      final ListNode lian = ListUtils.createLian();
+      final ListNode lian = ListNodeUtils.createLian();
       final ListNode listNode = swapPairs(lian);
     }
     /**
