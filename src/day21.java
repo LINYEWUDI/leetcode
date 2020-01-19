@@ -8,6 +8,32 @@ public class day21 {
    * 输出：1->1->2->3->4->4
    */
 
+  /**
+   * 递归
+   */
+  public static ListNode digui(ListNode l1, ListNode l2) {
+
+    //出口
+    if (l1 == null){
+      return l2;
+    }
+
+    if (l2 == null){
+      return l1;
+    }
+
+    ListNode digui = null;
+
+    digui = digui(l1.next, l2.next);
+
+    //本次操作
+    l1.next = l2;
+    l2.next = digui;
+
+    return l1;
+  }
+
+
 
   /**
    *  迭代
@@ -50,7 +76,7 @@ public class day21 {
     listNodeY3.next = listNodeY2;
     listNodeY2.next = listNodeY1;
 
-    ListNode listNode = mergeTwoLists(listNodeX3, listNodeY3);
+    ListNode listNode = digui(listNodeX3, listNodeY3);
 
     while (listNode.next!=null || listNode.val!=null){
       System.out.println(listNode.val);
