@@ -4,6 +4,8 @@ package MyThink.thread.threaderrordemo;
  * 观察者模式验证线程安全问题
  *
  * 此时会出现问题：先看构造器里面的初始化方法,会打印出count的值,但是最后输出的count前后是不一致的
+ * 因为初始化的时间顺序问题
+ *
  */
 
 public class MultiThreadError1 {
@@ -50,6 +52,7 @@ public class MultiThreadError1 {
 
     resource.registerListener((event) -> {
       //查看当前的count值是多少,初始化到这一步时为0
+      System.out.println();
       System.out.println("1让我看看现在的count是多少"+count);
 
     });
