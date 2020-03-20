@@ -21,6 +21,9 @@ class Serviced{
     Userd user  = new Userd("豆豆");
     ThreadLocal<Userd> userThreadLocal = TheadLocalHandlerd.returnSameUserTheadLocal();
     userThreadLocal.set(user);
+
+    Userd user1  = new Userd("豆豆11111");
+    userThreadLocal.set(user1);
     new Serviced1().useUser();
   }
 }
@@ -63,7 +66,7 @@ class Userd{
 
 class TheadLocalHandlerd{
   static ThreadLocal<Userd> userThreadLocal = new ThreadLocal<>();
-  //非单例
+  //单例
   static ThreadLocal<Userd> returnSameUserTheadLocal(){
     return userThreadLocal;
   }

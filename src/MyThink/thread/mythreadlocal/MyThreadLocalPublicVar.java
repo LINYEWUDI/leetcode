@@ -31,7 +31,6 @@ class Service{
 
 class Service1{
   public void useUser(){
-    //
     ThreadLocal<User> userThreadLocal = TheadLocalHandler.newUserTheadLocal();
     userThreadLocal.set(new User("阿土"));
     List<ThreadLocal> list = TheadLocalHandler.newUserTheadLocalList();
@@ -73,7 +72,7 @@ class TheadLocalHandler{
     return userThreadLocal;
   }
 
-  //单例threadlocal集合
+  //单例的threadlocal集合
   static ArrayList<ThreadLocal> list = new ArrayList<>();
   static List<ThreadLocal> newUserTheadLocalList(){
     return list;

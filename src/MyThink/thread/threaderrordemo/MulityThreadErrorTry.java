@@ -1,7 +1,10 @@
 package MyThink.thread.threaderrordemo;
 
 /**
- * 学习下观察者模式
+ * 学习下观察者模式:这个类的问题就是  这个类的构造方法在在主线程里面，构造方法里面完成了对subject对象的初始化，
+ * 但是主方法里面的子线程有可能在subject对象初始化之前就已经开始执行了，也有可能是已经初始化之后开始执行，有着不确定性
+ *
+ * 这里也就是线程安全跟时序有关，那就是线程不安全了
  */
 public class MulityThreadErrorTry {
   public static void main(String[] args) {

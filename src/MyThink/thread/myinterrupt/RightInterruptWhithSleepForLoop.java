@@ -7,16 +7,19 @@ public class RightInterruptWhithSleepForLoop implements Runnable {
   @Override
   public void run() {
     int i = 0;
-    try {
-      while (i < 301 && !Thread.currentThread().isInterrupted()) {
-        if (i % 10 == 0) {
-          System.out.println(i);
-        }
-        i++;
-        Thread.sleep(10);
+    while (i < 30001 && !Thread.currentThread().isInterrupted()) {
+      if (i % 10 == 0) {
+        System.out.println(i);
       }
-    } catch (InterruptedException e) {
-      e.printStackTrace();
+      i++;
+
+      try {
+        Thread.sleep(10);
+      } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+        e.printStackTrace();
+      }
+
     }
   }
 
