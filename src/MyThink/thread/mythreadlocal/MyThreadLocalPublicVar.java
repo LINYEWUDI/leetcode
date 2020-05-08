@@ -76,5 +76,7 @@ class TheadLocalHandler{
   static ArrayList<ThreadLocal> list = new ArrayList<>();
   static List<ThreadLocal> newUserTheadLocalList(){
     return list;
+
   }
+
 }
