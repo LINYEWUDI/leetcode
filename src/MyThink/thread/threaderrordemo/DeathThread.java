@@ -2,8 +2,8 @@ package MyThink.thread.threaderrordemo;
 
 public class DeathThread {
 
-  static DeathThread d1 = new DeathThread();
-  static DeathThread d2 = new DeathThread();
+  static Object d1 = new Object();
+  static Object d2 = new Object();
 
   public static void main(String[] args) {
     Runnable runnable1 = () -> {
@@ -15,7 +15,7 @@ public class DeathThread {
       }
     };
 
-    Runnable runnable = () -> {
+    Runnable runnable2 = () -> {
       synchronized (d2) {
         System.out.println(Thread.currentThread().getName() + "我在d2");
         synchronized (d1) {
@@ -24,7 +24,7 @@ public class DeathThread {
       }
     };
 
-    new Thread(runnable).start();
+    new Thread(runnable2).start();
     new Thread(runnable1).start();
   }
 }

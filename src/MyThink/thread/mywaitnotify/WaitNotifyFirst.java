@@ -2,14 +2,16 @@ package MyThink.thread.mywaitnotify;
 
 public class WaitNotifyFirst {
 
-  public int i = 1;
+  int i = 1;
 
   static Object object = new Object();
+
   public static void main(String[] args) {
 
     Thread thread = new Thread(new Runnable() {
       @Override
       public void run() {
+
         synchronized (object) {
           try {
             System.out.println(Thread.currentThread().getName() + "准备wait");
@@ -23,6 +25,8 @@ public class WaitNotifyFirst {
         System.out.println(Thread.currentThread().getName()+"执行结束");
       }
     });
+
+
 
     Thread thread1 = new Thread(new Runnable() {
       @Override
@@ -47,10 +51,6 @@ public class WaitNotifyFirst {
     thread1.start();
 
 
-  }
-
-  private void methid() {
-    System.out.println(this);
   }
 
 
