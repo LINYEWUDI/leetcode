@@ -3,7 +3,7 @@ package MyThink.jvm;
 /**
  * 利用jstack工具，排查问题
  */
-public class JStckDemo {
+public class JStckCPUDemo {
 
     public static void main(String[] args) {
 
