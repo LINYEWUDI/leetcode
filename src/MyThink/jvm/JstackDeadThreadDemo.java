@@ -1,5 +1,8 @@
 package MyThink.jvm;
 
+/**
+ * jstack可以发现该进程中的死锁问题
+ */
 public class JstackDeadThreadDemo {
 
     static Object object1 = new Object();
