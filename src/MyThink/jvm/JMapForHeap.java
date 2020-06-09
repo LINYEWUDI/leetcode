@@ -4,6 +4,8 @@ package MyThink.jvm;
  * 使用jmap查看堆中内存占用，下面的代码意义：
  * 在初始化byte数组之前查看堆中内存大小，初始化完成之后
  * 再使用jmap查看增加的大小，gc后再查看堆中的大小
+ *
+ * 也可以使用jconsole，界面工具进行查看，也非常直观
  */
 public class JMapForHeap {
     public static void main(String[] args) throws InterruptedException {
