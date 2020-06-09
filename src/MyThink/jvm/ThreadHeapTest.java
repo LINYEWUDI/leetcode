@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * 本类用来测试子线程的内存溢出，
  * 主线程会不会收到影响，以及子线程OOM后，堆内存会不会释放
  *
+ *
  */
 public class ThreadHeapTest {
 
