@@ -12,16 +12,18 @@ public class ThreadHeapTest {
 
 
     public static void main(String[] args) throws InterruptedException {
-//        new Thread(() -> {
-//        }).start();
-//        Thread.sleep(1000);
+        Thread.sleep(10000);
+        new Thread(() -> {
+            final ArrayList<byte[]> list = new ArrayList<>();
+            list.add(new byte[_8M]);
+            list.add(new byte[_8M]);
+            list.add(new byte[_8M]);
+            list.add(new byte[_8M]);
+        }).start();
 
-        final ArrayList<byte[]> list = new ArrayList<>();
+        Thread.sleep(10000);
 
-        list.add(new byte[_8M]);
-        list.add(new byte[_8M]);
-        list.add(new byte[_8M]);
-        list.add(new byte[_8M]);
+
 
         System.out.println(111);
     }
