@@ -3,7 +3,7 @@ package MyThink;
 
 /*@Controller
 @Scope("prototype")  @Scope("Singleton")
-public class MyController {
+public share MyController {
     static int i = 10;
     int j = 10;
     @RequestMapping("/point")

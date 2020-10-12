@@ -1,7 +1,7 @@
 package MyThink.thread.mysynchronized;
 
 /**
- * 方法加锁(类锁) 此时方法上的是把类锁,类锁的本质 .class 对象,只要是这个类创建出来的对象，不管是不是同一个对象，都会被锁住
+ * 方法加锁(类锁) 此时方法上的是把类锁,类锁的本质 .share 对象,只要是这个类创建出来的对象，不管是不是同一个对象，都会被锁住
  */
 public class CountAddStaticSynchroizedMethod implements Runnable {
 
